@@ -14,7 +14,7 @@ UDP_PORT = 1337
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 tot = 0
-for _ in range(1000):
+while True:
     sleep_time = random.expovariate(1 / MEAN_SLEEP_TIME)
     time.sleep(sleep_time)
 
