@@ -1,0 +1,21 @@
+Repo: git@github.com:argilo/RS41FOX-private.git
+Branch: bso2023
+
+Packages needed:
+* gcc-arm-none-eabi
+* openocd
+
+To flash radiosondes:
+
+mkdir build
+cd build
+cmake -DTRANSMIT_FREQUENCY:STRING=432.535 -DBEACON_NUM:STRING=1 .. && make && openocd -f ../../RS41ng/openocd_rs41.cfg -c "program RS41FOX.elf verify reset exit"
+cmake -DTRANSMIT_FREQUENCY:STRING=432.660 -DBEACON_NUM:STRING=2 .. && make && openocd -f ../../RS41ng/openocd_rs41.cfg -c "program RS41FOX.elf verify reset exit"
+cmake -DTRANSMIT_FREQUENCY:STRING=432.845 -DBEACON_NUM:STRING=3 .. && make && openocd -f ../../RS41ng/openocd_rs41.cfg -c "program RS41FOX.elf verify reset exit"
+cmake -DTRANSMIT_FREQUENCY:STRING=432.985 -DBEACON_NUM:STRING=4 .. && make && openocd -f ../../RS41ng/openocd_rs41.cfg -c "program RS41FOX.elf verify reset exit"
+cmake -DTRANSMIT_FREQUENCY:STRING=432.620 -DBEACON_NUM:STRING=5 .. && make && openocd -f ../../RS41ng/openocd_rs41.cfg -c "program RS41FOX.elf verify reset exit"
+cmake -DTRANSMIT_FREQUENCY:STRING=432.400 -DBEACON_NUM:STRING=6 .. && make && openocd -f ../../RS41ng/openocd_rs41.cfg -c "program RS41FOX.elf verify reset exit"
+cmake -DTRANSMIT_FREQUENCY:STRING=432.475 -DBEACON_NUM:STRING=7 .. && make && openocd -f ../../RS41ng/openocd_rs41.cfg -c "program RS41FOX.elf verify reset exit"
+cmake -DTRANSMIT_FREQUENCY:STRING=432.905 -DBEACON_NUM:STRING=8 .. && make && openocd -f ../../RS41ng/openocd_rs41.cfg -c "program RS41FOX.elf verify reset exit"
+cmake -DTRANSMIT_FREQUENCY:STRING=432.800 -DBEACON_NUM:STRING=9 .. && make && openocd -f ../../RS41ng/openocd_rs41.cfg -c "program RS41FOX.elf verify reset exit"
+cmake -DTRANSMIT_FREQUENCY:STRING=432.745 -DBEACON_NUM:STRING=10 .. && make && openocd -f ../../RS41ng/openocd_rs41.cfg -c "program RS41FOX.elf verify reset exit"
