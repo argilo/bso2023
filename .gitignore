@@ -1,1 +1,4 @@
 /crypt/key.bin
+/rsa/keygen.sage.py
+/rsa/private.pem
+/rsa/public.pem
