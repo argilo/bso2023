@@ -41,3 +41,5 @@ plaintext = FLAG.encode()
 ciphertext = public_key.encrypt(plaintext, padding.PKCS1v15())
 with open("message.enc", "wb") as f:
     f.write(ciphertext)
+
+# decrypt with: openssl pkeyutl -decrypt -inkey private.pem -in message.enc
