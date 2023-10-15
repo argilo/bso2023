@@ -1,7 +1,8 @@
-from cryptography.hazmat.primitives.asymmetric import rsa
+from cryptography.hazmat.primitives.asymmetric import rsa, padding
 from cryptography.hazmat.primitives.serialization import Encoding, NoEncryption, PublicFormat, PrivateFormat
 import random
 
+FLAG = "flag{oOo0p5_0fF_bY_10x}"
 BITS = round(409.6)
 
 half_bits = BITS // 2
@@ -13,7 +14,6 @@ n = p * q
 e = 2^16 + 1
 
 public_numbers = rsa.RSAPublicNumbers(int(e), int(n))
-print(public_numbers)
 public_key = public_numbers.public_key()
 
 with open("public.pem", "wb") as f:
@@ -35,3 +35,9 @@ with open("private.pem", "wb") as f:
     f.write(private_key.private_bytes(Encoding.PEM, PrivateFormat.PKCS8, NoEncryption()))
 
 # display with: openssl rsa -in private.pem -text -noout
+
+plaintext = FLAG.encode()
+
+ciphertext = public_key.encrypt(plaintext, padding.PKCS1v15())
+with open("message.enc", "wb") as f:
+    f.write(ciphertext)
