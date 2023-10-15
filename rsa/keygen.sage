@@ -1,9 +1,15 @@
 from cryptography.hazmat.primitives.asymmetric import rsa, padding
 from cryptography.hazmat.primitives.serialization import Encoding, NoEncryption, PublicFormat, PrivateFormat
+from datetime import datetime
 import random
+import zipfile
 
-FLAG = "flag{oOo0p5_0fF_bY_10x}"
+FLAG = "flag{oOo0pS_0fF_bY_10x}"
 BITS = round(409.6)
+
+NUM_FILES = 1000
+START_DT = datetime(2023, 1, 1)
+END_DT = datetime(2023, 10, 26)
 
 half_bits = BITS // 2
 
@@ -15,9 +21,6 @@ e = 2^16 + 1
 
 public_numbers = rsa.RSAPublicNumbers(int(e), int(n))
 public_key = public_numbers.public_key()
-
-with open("public.pem", "wb") as f:
-    f.write(public_key.public_bytes(Encoding.PEM, PublicFormat.SubjectPublicKeyInfo))
 
 # display with: openssl rsa -pubin -in public.pem -text -noout
 
@@ -36,10 +39,26 @@ with open("private.pem", "wb") as f:
 
 # display with: openssl rsa -in private.pem -text -noout
 
-plaintext = FLAG.encode()
+flag_index = random.randrange(0, NUM_FILES)
+dts = [datetime.fromtimestamp(random.uniform(START_DT.timestamp(), END_DT.timestamp())) for _ in range(NUM_FILES)]
+dts.sort()
 
-ciphertext = public_key.encrypt(plaintext, padding.PKCS1v15())
-with open("message.enc", "wb") as f:
-    f.write(ciphertext)
+with zipfile.ZipFile("crypt.zip", "w") as myzip:
+    zi = zipfile.ZipInfo(filename="public.pem", date_time=(2022, 3, 4, 14, 15, 16))
+    with myzip.open(zi, "w") as f:
+        f.write(public_key.public_bytes(Encoding.PEM, PublicFormat.SubjectPublicKeyInfo))
+
+    for index, dt in enumerate(dts):
+        if index == flag_index:
+            plaintext = FLAG.encode() + b"\n"
+        else:
+            plaintext = "foobar".encode() + b"\n"
+
+        ciphertext = public_key.encrypt(plaintext, padding.PKCS1v15())
+        filename = f"{dt.year:04}{dt.month:02}{dt.day:02}_{dt.hour:02}{dt.minute:02}{dt.second:02}.enc"
+        zi = zipfile.ZipInfo(filename, date_time=(dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second))
+
+        with myzip.open(zi, "w") as f:
+            f.write(ciphertext)
 
 # decrypt with: openssl pkeyutl -decrypt -inkey private.pem -in message.enc
