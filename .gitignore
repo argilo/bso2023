@@ -2,3 +2,5 @@
 /rsa/keygen.sage.py
 /rsa/private.pem
 /rsa/public.pem
+/rsa/crypt.zip
+/rsa/log/*.enc

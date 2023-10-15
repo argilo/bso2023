@@ -1,10 +1,11 @@
 from cryptography.hazmat.primitives.asymmetric import rsa, padding
 from cryptography.hazmat.primitives.serialization import Encoding, NoEncryption, PublicFormat, PrivateFormat
 from datetime import datetime
+import json
 import random
 import zipfile
 
-FLAG = "flag{oOo0pS_0fF_bY_10x}"
+FLAG = "flag{oOoo0pS_0fF_bY_10x}"
 BITS = round(409.6)
 
 NUM_FILES = 1000
@@ -39,7 +40,9 @@ with open("private.pem", "wb") as f:
 
 # display with: openssl rsa -in private.pem -text -noout
 
-flag_index = random.randrange(0, NUM_FILES)
+assert len(FLAG) % 2 == 0
+flag_indexes = random.sample(range(NUM_FILES), len(FLAG) // 2)
+flag_offset = 0
 dts = [datetime.fromtimestamp(random.uniform(START_DT.timestamp(), END_DT.timestamp())) for _ in range(NUM_FILES)]
 dts.sort()
 
@@ -49,13 +52,21 @@ with zipfile.ZipFile("crypt.zip", "w") as myzip:
         f.write(public_key.public_bytes(Encoding.PEM, PublicFormat.SubjectPublicKeyInfo))
 
     for index, dt in enumerate(dts):
-        if index == flag_index:
-            plaintext = FLAG.encode() + b"\n"
-        else:
-            plaintext = "foobar".encode() + b"\n"
+        payload = {
+            "machine_id": random.randrange(20, 40),
+            "status": "ok"
+        }
 
-        ciphertext = public_key.encrypt(plaintext, padding.PKCS1v15())
-        filename = f"{dt.year:04}{dt.month:02}{dt.day:02}_{dt.hour:02}{dt.minute:02}{dt.second:02}.enc"
+        if index in flag_indexes:
+            payload["status"] = FLAG[flag_offset:flag_offset + 2]
+            flag_offset += 2
+
+        json_payload = json.dumps(payload, separators=(",", ":"))
+        plaintext = json_payload.encode()
+        assert len(plaintext) <= 41
+
+        ciphertext = public_key.encrypt(json_payload.encode()[:41], padding.PKCS1v15())
+        filename = f"log/{dt.year:04}{dt.month:02}{dt.day:02}_{dt.hour:02}{dt.minute:02}{dt.second:02}.enc"
         zi = zipfile.ZipInfo(filename, date_time=(dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second))
 
         with myzip.open(zi, "w") as f:
