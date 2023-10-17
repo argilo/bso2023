@@ -8,8 +8,11 @@ import struct
 import threading
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 
-UDP_IP = "127.0.0.1"
-UDP_PORT = 1337
+UDP_IP_MESSAGES = "127.0.0.1"
+UDP_PORT_MESSAGES = 1337
+
+UDP_IP_RADIO = "127.0.0.1"
+UDP_PORT_RADIO = 31337
 
 
 def encrypt(key, plaintext):
@@ -37,7 +40,7 @@ def send_test_messages(stop_event, stop_condition):
 
     while not stop_event.is_set():
         message = f"This is a periodic test message. Sequential number: {n:05}."
-        send_sock.sendto(message.encode(), (UDP_IP, UDP_PORT))
+        send_sock.sendto(message.encode(), (UDP_IP_MESSAGES, UDP_PORT_MESSAGES))
         n += 1
 
         sleep_time = random.expovariate(1 / MEAN_SLEEP_TIME)
@@ -50,7 +53,9 @@ with open("key.bin", "rb") as f:
     key = f.read(32)
 
 recv_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-recv_sock.bind((UDP_IP, UDP_PORT))
+recv_sock.bind((UDP_IP_MESSAGES, UDP_PORT_MESSAGES))
+
+radio_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 stop_event = threading.Event()
 stop_condition = threading.Condition()
@@ -63,6 +68,7 @@ try:
         message, _ = recv_sock.recvfrom(1024)
         ciphertext = encrypt(key, message)
         packet = encode_packet(ciphertext)
+        radio_sock.sendto(packet, (UDP_IP_RADIO, UDP_PORT_RADIO))
         print(message.decode())
         print(packet.hex())
 except KeyboardInterrupt:
