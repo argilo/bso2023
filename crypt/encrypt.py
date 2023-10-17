@@ -63,7 +63,7 @@ try:
         message, _ = recv_sock.recvfrom(1024)
         ciphertext = encrypt(key, message)
         packet = encode_packet(ciphertext)
-        print(message)
+        print(message.decode())
         print(packet.hex())
 except KeyboardInterrupt:
     stop_event.set()
