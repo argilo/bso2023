@@ -23,7 +23,13 @@ def encrypt(key, plaintext):
     return nonce + ciphertext
 
 
-# Send periodic test messages of our own to make sure the system is working.
+def encode_packet(payload):
+    preamble = bytes([0b01010101] * 16)
+    sync_word = bytes([0xd3, 0x91])
+    return preamble + sync_word + payload
+
+
+# Send periodic test messages of our own to make sure the system is working
 def send_test_messages(stop_event, stop_condition):
     MEAN_SLEEP_TIME = 5.0
     send_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -53,9 +59,12 @@ thread.start()
 
 try:
     while True:
+        # Receive messages from networked sensors, as well as our own test messages
         message, _ = recv_sock.recvfrom(1024)
+        ciphertext = encrypt(key, message)
+        packet = encode_packet(ciphertext)
         print(message)
-        print(encrypt(key, message).hex())
+        print(packet.hex())
 except KeyboardInterrupt:
     stop_event.set()
     stop_condition.acquire()
