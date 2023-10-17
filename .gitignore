@@ -1,4 +1,5 @@
 /crypt/key.bin
+/crypt/fsk_tx.py
 /rsa/generate.sage.py
 /rsa/private.pem
 /rsa/public.pem
