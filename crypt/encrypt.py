@@ -27,7 +27,7 @@ def encrypt(key, plaintext):
 
 
 def encode_packet(payload):
-    padding = bytes([0])
+    padding = bytes([0, 0])
     preamble = bytes([0b01010101] * 16)
     sync_word = bytes([0xd3, 0x91])
     return padding + preamble + sync_word + payload + padding
