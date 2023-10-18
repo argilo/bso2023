@@ -268,6 +268,32 @@ blocks:
     coordinate: [784, 396.0]
     rotation: 180
     state: true
+- name: iio_pluto_sink_0
+  id: iio_pluto_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    attenuation1: '0.0'
+    bandwidth: '20000000'
+    buffer_size: '8192'
+    comment: ''
+    cyclic: 'False'
+    filter: ''
+    filter_source: '''Auto'''
+    fpass: '0'
+    frequency: freq - offset
+    fstop: '0'
+    len_tag_key: ''
+    samplerate: samp_rate
+    type: fc32
+    uri: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [328, 540.0]
+    rotation: 0
+    state: true
 - name: import_0
   id: import
   parameters:
@@ -613,14 +639,15 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [360, 580.0]
+    coordinate: [328, 708.0]
     rotation: 0
-    state: true
+    state: disabled
 
 connections:
 - [blocks_packed_to_unpacked_xx_0, '0', blocks_repeat_1, '0']
 - [blocks_repeat_1, '0', digital_chunks_to_symbols_xx_1, '0']
 - [blocks_rotator_cc_0, '0', blocks_sigmf_sink_minimal_0, '0']
+- [blocks_rotator_cc_0, '0', iio_pluto_sink_0, '0']
 - [blocks_rotator_cc_0, '0', uhd_usrp_sink_0, '0']
 - [blocks_vco_c_0, '0', filter_fft_low_pass_filter_0, '0']
 - [digital_chunks_to_symbols_xx_1, '0', blocks_vco_c_0, '0']
