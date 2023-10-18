@@ -53,6 +53,9 @@ def send_test_messages(stop_event, stop_condition):
 with open("key.bin", "rb") as f:
     key = f.read(32)
 
+with open("flag1.txt", "rb") as f:
+    flag1 = f.read().strip()
+
 recv_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 recv_sock.bind((UDP_IP_MESSAGES, UDP_PORT_MESSAGES))
 
@@ -68,7 +71,7 @@ try:
         # Receive messages from networked sensors, as well as our own test messages
         message, _ = recv_sock.recvfrom(1024)
         ciphertext = encrypt(key, message)
-        packet = encode_packet(ciphertext)
+        packet = encode_packet(flag1 + ciphertext)
         radio_sock.sendto(packet, (UDP_IP_RADIO, UDP_PORT_RADIO))
         print(message.decode())
         print(packet.hex())
