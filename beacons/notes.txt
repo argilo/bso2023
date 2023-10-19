@@ -9,6 +9,7 @@ To flash radiosondes:
 
 mkdir build
 cd build
+openocd -f ../../RS41ng/openocd_rs41.cfg -c "init; halt; flash protect 0 0 31 off; exit"
 cmake -DTRANSMIT_FREQUENCY:STRING=432.535 -DBEACON_NUM:STRING=1 .. && make && openocd -f ../../RS41ng/openocd_rs41.cfg -c "program RS41FOX.elf verify reset exit"
 cmake -DTRANSMIT_FREQUENCY:STRING=432.660 -DBEACON_NUM:STRING=2 .. && make && openocd -f ../../RS41ng/openocd_rs41.cfg -c "program RS41FOX.elf verify reset exit"
 cmake -DTRANSMIT_FREQUENCY:STRING=432.845 -DBEACON_NUM:STRING=3 .. && make && openocd -f ../../RS41ng/openocd_rs41.cfg -c "program RS41FOX.elf verify reset exit"
