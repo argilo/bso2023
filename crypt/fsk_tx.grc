@@ -129,7 +129,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [304, 264.0]
+    coordinate: [280, 248.0]
     rotation: 0
     state: true
 - name: blocks_packed_to_unpacked_xx_0
@@ -652,7 +652,7 @@ connections:
 - [blocks_vco_c_0, '0', filter_fft_low_pass_filter_0, '0']
 - [digital_chunks_to_symbols_xx_1, '0', blocks_vco_c_0, '0']
 - [filter_fft_low_pass_filter_0, '0', rational_resampler_xxx_0, '0']
-- [network_socket_pdu_0, pdus, blocks_message_debug_0, log]
+- [network_socket_pdu_0, pdus, blocks_message_debug_0, print]
 - [network_socket_pdu_0, pdus, pdu_pdu_to_stream_x_0, pdus]
 - [pdu_pdu_to_stream_x_0, '0', blocks_packed_to_unpacked_xx_0, '0']
 - [rational_resampler_xxx_0, '0', blocks_rotator_cc_0, '0']
