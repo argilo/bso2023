@@ -3,5 +3,5 @@
 /rsa/generate.sage.py
 /rsa/private.pem
 /rsa/public.pem
-/rsa/crypt.zip
+/rsa/logs_2023.zip
 /rsa/log/*.enc

@@ -46,7 +46,7 @@ flag_offset = 0
 dts = [datetime.fromtimestamp(random.uniform(START_DT.timestamp(), END_DT.timestamp())) for _ in range(NUM_FILES)]
 dts.sort()
 
-with zipfile.ZipFile("crypt.zip", "w") as myzip:
+with zipfile.ZipFile("logs_2023.zip", "w") as myzip:
     zi = zipfile.ZipInfo(filename="public.pem", date_time=(2022, 3, 4, 14, 15, 16))
     with myzip.open(zi, "w") as f:
         f.write(public_key.public_bytes(Encoding.PEM, PublicFormat.SubjectPublicKeyInfo))
