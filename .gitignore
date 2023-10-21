@@ -1,5 +1,7 @@
 /crypt/key.bin
 /crypt/fsk_tx.py
+/fm/dtmf.sigmf-*
+/fm/extract_fm.py
 /rsa/generate.sage.py
 /rsa/private.pem
 /rsa/public.pem
