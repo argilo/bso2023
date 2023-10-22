@@ -128,7 +128,7 @@ blocks:
     ant7: '"TX/RX"'
     ant8: '"TX/RX"'
     ant9: '"TX/RX"'
-    bw0: '0'
+    bw0: '24000000'
     bw1: '0'
     bw10: '0'
     bw11: '0'
@@ -365,9 +365,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [464, 148.0]
+    coordinate: [464, 140.0]
     rotation: 0
-    state: true
+    state: enabled
 
 connections:
 - [blocks_file_source_0, '0', uhd_usrp_sink_0, '0']
