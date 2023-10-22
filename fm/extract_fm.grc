@@ -99,6 +99,23 @@ blocks:
     coordinate: [200, 12.0]
     rotation: 0
     state: enabled
+- name: blocks_complex_to_interleaved_short_0
+  id: blocks_complex_to_interleaved_short
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    scale_factor: '32768.0'
+    vector_output: 'False'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [872, 372.0]
+    rotation: 180
+    state: true
 - name: blocks_rotator_cc_0
   id: blocks_rotator_cc
   parameters:
@@ -128,13 +145,13 @@ blocks:
     filename: dtmf
     hw_info: ''
     sample_rate: out_rate
-    type: complex float (fc32_le)
+    type: complex short (sc16_le)
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1080, 196.0]
-    rotation: 0
+    coordinate: [648, 340.0]
+    rotation: 180
     state: true
 - name: blocks_sigmf_source_minimal_0
   id: blocks_sigmf_source_minimal
@@ -211,7 +228,8 @@ blocks:
     state: true
 
 connections:
-- [blocks_rotator_cc_0, '0', blocks_sigmf_sink_minimal_0, '0']
+- [blocks_complex_to_interleaved_short_0, '0', blocks_sigmf_sink_minimal_0, '0']
+- [blocks_rotator_cc_0, '0', blocks_complex_to_interleaved_short_0, '0']
 - [blocks_sigmf_source_minimal_0, '0', freq_xlating_fir_filter_xxx_0, '0']
 - [freq_xlating_fir_filter_xxx_0, '0', rational_resampler_xxx_0, '0']
 - [rational_resampler_xxx_0, '0', blocks_rotator_cc_0, '0']
