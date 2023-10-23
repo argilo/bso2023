@@ -5,8 +5,10 @@
 /hop/hop.sigmf-*
 /hop/hop.py
 /m17/m17.py
-/m17/m17.bin
-/m17/m17.sigmf-*
+/m17/m17_1.bin
+/m17/m17_2.bin
+/m17/m17_1.sigmf-*
+/m17/m17_2.sigmf-*
 /paint/flag.png
 /paint/paint_wide.py
 /paint/paint.sigmf-*

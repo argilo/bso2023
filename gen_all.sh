@@ -33,10 +33,19 @@ cd ..
 
 cd m17
 grcc m17.grc
-cat <(dd if=/dev/zero bs=16000 count=3) <(sox m17_flag.wav -r 8000 -t raw -) | ~/git/m17-tools/build/apps/m17-mod -S VE3IRR --bin > m17.bin
-./m17.py --in-file=m17.bin --out-file=m17 --amplitude=0.8
+cat <(dd if=/dev/zero bs=16000 count=3) <(sox m17_flag.wav -r 8000 -t raw -) | ~/git/m17-tools/build/apps/m17-mod -S VE3IRR --bin > m17_1.bin
+cat <(dd if=/dev/zero bs=16000 count=3) <(sox m17_flag.wav -r 8000 -t raw -) | ~/git/m17-tools/build/apps/m17-mod -S CYBERPICL --bin > m17_2.bin
+./m17.py --in-file=m17_1.bin --out-file=m17_1 --amplitude=0.8
+./m17.py --in-file=m17_2.bin --out-file=m17_2 --amplitude=0.2
 cd ..
 
-cat fm/dtmf.sigmf-data m17/m17.sigmf-data hop/hop.sigmf-data paint/paint.sigmf-data > out.cf32
+cat \
+  fm/dtmf.sigmf-data \
+  m17/m17_1.sigmf-data \
+  <(dd if=/dev/zero bs=230400000 count=1) \
+  m17/m17_2.sigmf-data \
+  hop/hop.sigmf-data \
+  paint/paint.sigmf-data \
+  > out.cf32
 
 grcc transmit.grc
