@@ -22,7 +22,7 @@ options:
     run_options: prompt
     sizing_mode: fixed
     thread_safe_setters: ''
-    title: Not titled yet
+    title: BSides 2023 Main
     window_size: (1000,1000)
   states:
     bus_sink: false
@@ -61,7 +61,7 @@ blocks:
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: 0, 0, 1, 1
+    gui_hint: 1, 0, 1, 1
     label: ''
     min_len: '200'
     orient: QtCore.Qt.Horizontal
@@ -75,14 +75,14 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [608, 12.0]
+    coordinate: [768, 12.0]
     rotation: 0
     state: true
 - name: phase
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: 1, 0, 1, 1
+    gui_hint: 2, 0, 1, 1
     label: ''
     min_len: '200'
     orient: QtCore.Qt.Horizontal
@@ -96,7 +96,28 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [736, 12.0]
+    coordinate: [896, 12.0]
+    rotation: 0
+    state: true
+- name: power
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: 0, 0, 1, 1
+    label: ''
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '17'
+    step: '0.2'
+    stop: '73'
+    value: '43'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [648, 12.0]
     rotation: 0
     state: true
 - name: samp_rate
