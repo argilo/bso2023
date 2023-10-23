@@ -85,7 +85,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1088, 276.0]
+    coordinate: [1088, 380.0]
     rotation: 180
     state: enabled
 - name: blocks_add_const_vxx_0
@@ -103,7 +103,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [448, 172.0]
+    coordinate: [448, 276.0]
     rotation: 0
     state: enabled
 - name: blocks_complex_to_interleaved_short_0
@@ -120,7 +120,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [992, 412.0]
+    coordinate: [992, 516.0]
     rotation: 0
     state: true
 - name: blocks_keep_m_in_n_0
@@ -139,7 +139,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [552, 404.0]
+    coordinate: [552, 508.0]
     rotation: 0
     state: true
 - name: blocks_magphase_to_complex_0
@@ -155,7 +155,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [752, 264.0]
+    coordinate: [752, 368.0]
     rotation: 180
     state: enabled
 - name: blocks_multiply_const_vxx_0
@@ -173,7 +173,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [632, 172.0]
+    coordinate: [632, 276.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_const_vxx_1
@@ -191,7 +191,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [808, 420.0]
+    coordinate: [808, 524.0]
     rotation: 0
     state: enabled
 - name: blocks_repeat_1
@@ -209,8 +209,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [440, 100.0]
-    rotation: 0
+    coordinate: [448, 156.0]
+    rotation: 180
     state: true
 - name: blocks_sigmf_sink_minimal_0
   id: blocks_sigmf_sink_minimal
@@ -229,7 +229,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [976, 492.0]
+    coordinate: [976, 596.0]
     rotation: 180
     state: enabled
 - name: blocks_stream_to_vector_0
@@ -247,7 +247,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [552, 280.0]
+    coordinate: [552, 384.0]
     rotation: 180
     state: enabled
 - name: blocks_stream_to_vector_1
@@ -265,8 +265,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [264, 112.0]
-    rotation: 0
+    coordinate: [664, 168.0]
+    rotation: 180
     state: true
 - name: blocks_transcendental_0
   id: blocks_transcendental
@@ -282,7 +282,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [856, 172.0]
+    coordinate: [856, 276.0]
     rotation: 0
     state: enabled
 - name: blocks_uchar_to_float_0
@@ -297,7 +297,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [264, 176.0]
+    coordinate: [264, 280.0]
     rotation: 0
     state: enabled
 - name: blocks_vector_to_stream_0
@@ -315,8 +315,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [648, 112.0]
-    rotation: 0
+    coordinate: [264, 168.0]
+    rotation: 180
     state: true
 - name: digital_ofdm_cyclic_prefixer_0
   id: digital_ofdm_cyclic_prefixer
@@ -334,7 +334,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [320, 396.0]
+    coordinate: [320, 500.0]
     rotation: 0
     state: true
 - name: fft_vxx_0
@@ -355,7 +355,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [304, 244.0]
+    coordinate: [304, 348.0]
     rotation: 180
     state: enabled
 - name: import_0
@@ -406,8 +406,8 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [32, 132.0]
-    rotation: 0
+    coordinate: [856, 124.0]
+    rotation: 180
     state: enabled
 - name: samp_rate
   id: parameter
