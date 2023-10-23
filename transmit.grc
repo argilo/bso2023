@@ -181,7 +181,7 @@ blocks:
     comment: ''
     dev_args: ''
     freq_correction: '0'
-    gain: '43.0'
+    gain: power
     samp_rate: samp_rate
     type: fc32
   states:
