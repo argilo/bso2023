@@ -26,7 +26,7 @@ convert \
   -fill White \
   label:'flag\{this_is_a_very_wide_flag_indeed_c928359da12a4a00e32fa43063e5037256c571a0e75ff2019a6741215a166ff9\}' \
   -extent 40960x \
-  -resize 4096x\! \
+  -resize 8192x\! \
   flag.png
 ./paint_wide.py
 cd ..
