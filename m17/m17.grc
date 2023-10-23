@@ -116,7 +116,7 @@ blocks:
     alias: ''
     begin_tag: pmt.PMT_NIL
     comment: ''
-    file: m17.bin
+    file: in_file
     length: '0'
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -195,7 +195,7 @@ blocks:
     center_freq: np.nan
     comment: ''
     description: ''
-    filename: m17
+    filename: out_file
     hw_info: ''
     sample_rate: samp_rate
     type: complex float (fc32_le)
@@ -237,6 +237,40 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [200, 12.0]
+    rotation: 0
+    state: true
+- name: in_file
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: ''
+    short_id: ''
+    type: str
+    value: foo.bin
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [544, 12.0]
+    rotation: 0
+    state: true
+- name: out_file
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: ''
+    short_id: ''
+    type: str
+    value: bar
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [640, 12.0]
     rotation: 0
     state: true
 - name: rational_resampler_xxx_1
