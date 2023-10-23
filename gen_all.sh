@@ -33,8 +33,8 @@ cd ..
 
 cd m17
 grcc m17.grc
-cat <(dd if=/dev/zero bs=16000 count=3) <(sox m17_flag.wav -r 8000 -t raw -) | ~/git/m17-tools/build/apps/m17-mod -S VE3IRR --bin > m17_1.bin
-cat <(dd if=/dev/zero bs=16000 count=3) <(sox m17_flag.wav -r 8000 -t raw -) | ~/git/m17-tools/build/apps/m17-mod -S CYBERPICL --bin > m17_2.bin
+cat <(dd if=/dev/zero bs=16000 count=2) <(sox m17_flag.wav -r 8000 -t raw -) | ~/git/m17-tools/build/apps/m17-mod -S VE3IRR --bin > m17_1.bin
+cat <(dd if=/dev/zero bs=16000 count=2) <(sox m17_flag.wav -r 8000 -t raw -) | ~/git/m17-tools/build/apps/m17-mod -S CYBERPICL --bin > m17_2.bin
 ./m17.py --in-file=m17_1.bin --out-file=m17_1 --amplitude=0.8
 ./m17.py --in-file=m17_2.bin --out-file=m17_2 --amplitude=0.2
 cd ..
