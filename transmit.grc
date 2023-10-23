@@ -76,19 +76,39 @@ blocks:
     alias: ''
     begin_tag: pmt.PMT_NIL
     comment: ''
-    file: out.sc16
+    file: out.cf32
     length: '0'
     maxoutbuf: '0'
     minoutbuf: '0'
     offset: '0'
     repeat: 'True'
-    type: short
-    vlen: '2'
+    type: complex
+    vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [232, 164.0]
+    coordinate: [232, 172.0]
+    rotation: 0
+    state: true
+- name: soapy_bladerf_sink_0
+  id: soapy_bladerf_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    bandwidth: '26000000'
+    center_freq: freq
+    comment: ''
+    dev_args: ''
+    freq_correction: '0'
+    gain: '43.0'
+    samp_rate: samp_rate
+    type: fc32
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [464, 208.0]
     rotation: 0
     state: true
 - name: uhd_usrp_sink_0
@@ -360,16 +380,17 @@ blocks:
     time_source5: ''
     time_source6: ''
     time_source7: ''
-    type: sc16
+    type: fc32
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [464, 140.0]
+    coordinate: [464, 316.0]
     rotation: 0
-    state: enabled
+    state: disabled
 
 connections:
+- [blocks_file_source_0, '0', soapy_bladerf_sink_0, '0']
 - [blocks_file_source_0, '0', uhd_usrp_sink_0, '0']
 
 metadata:

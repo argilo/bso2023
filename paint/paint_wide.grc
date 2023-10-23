@@ -106,23 +106,6 @@ blocks:
     coordinate: [448, 276.0]
     rotation: 0
     state: enabled
-- name: blocks_complex_to_interleaved_short_0
-  id: blocks_complex_to_interleaved_short
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    scale_factor: '32768.0'
-    vector_output: 'False'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [992, 516.0]
-    rotation: 0
-    state: true
 - name: blocks_keep_m_in_n_0
   id: blocks_keep_m_in_n
   parameters:
@@ -191,7 +174,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [808, 524.0]
+    coordinate: [728, 524.0]
     rotation: 0
     state: enabled
 - name: blocks_repeat_1
@@ -224,13 +207,13 @@ blocks:
     filename: paint
     hw_info: ''
     sample_rate: samp_rate
-    type: complex short (sc16_le)
+    type: complex float (fc32_le)
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [976, 596.0]
-    rotation: 180
+    coordinate: [920, 484.0]
+    rotation: 0
     state: enabled
 - name: blocks_stream_to_vector_0
   id: blocks_stream_to_vector
@@ -430,11 +413,10 @@ blocks:
 connections:
 - [analog_noise_source_x_0, '0', blocks_magphase_to_complex_0, '1']
 - [blocks_add_const_vxx_0, '0', blocks_multiply_const_vxx_0, '0']
-- [blocks_complex_to_interleaved_short_0, '0', blocks_sigmf_sink_minimal_0, '0']
 - [blocks_keep_m_in_n_0, '0', blocks_multiply_const_vxx_1, '0']
 - [blocks_magphase_to_complex_0, '0', blocks_stream_to_vector_0, '0']
 - [blocks_multiply_const_vxx_0, '0', blocks_transcendental_0, '0']
-- [blocks_multiply_const_vxx_1, '0', blocks_complex_to_interleaved_short_0, '0']
+- [blocks_multiply_const_vxx_1, '0', blocks_sigmf_sink_minimal_0, '0']
 - [blocks_repeat_1, '0', blocks_vector_to_stream_0, '0']
 - [blocks_stream_to_vector_0, '0', fft_vxx_0, '0']
 - [blocks_stream_to_vector_1, '0', blocks_repeat_1, '0']

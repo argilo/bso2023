@@ -31,6 +31,6 @@ convert \
 ./paint_wide.py
 cd ..
 
-cat fm/dtmf.sigmf-data hop/hop.sigmf-data paint/paint.sigmf-data > out.sc16
+cat fm/dtmf.sigmf-data hop/hop.sigmf-data paint/paint.sigmf-data > out.cf32
 
 grcc transmit.grc

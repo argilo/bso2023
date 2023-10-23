@@ -12,5 +12,5 @@
 /rsa/public.pem
 /rsa/logs_2023.zip
 /rsa/log/*.enc
-/out.sc16
+/out.cf32
 /transmit.py
