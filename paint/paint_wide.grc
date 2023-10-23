@@ -194,7 +194,7 @@ blocks:
     coordinate: [808, 420.0]
     rotation: 0
     state: enabled
-- name: blocks_repeat_0
+- name: blocks_repeat_1
   id: blocks_repeat
   parameters:
     affinity: ''
@@ -203,13 +203,13 @@ blocks:
     interp: reps
     maxoutbuf: '0'
     minoutbuf: '0'
-    type: complex
+    type: byte
     vlen: fft_size
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [104, 412.0]
+    coordinate: [440, 100.0]
     rotation: 0
     state: true
 - name: blocks_sigmf_sink_minimal_0
@@ -250,6 +250,24 @@ blocks:
     coordinate: [552, 280.0]
     rotation: 180
     state: enabled
+- name: blocks_stream_to_vector_1
+  id: blocks_stream_to_vector
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_items: fft_size
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [264, 112.0]
+    rotation: 0
+    state: true
 - name: blocks_transcendental_0
   id: blocks_transcendental
   parameters:
@@ -282,6 +300,24 @@ blocks:
     coordinate: [264, 176.0]
     rotation: 0
     state: enabled
+- name: blocks_vector_to_stream_0
+  id: blocks_vector_to_stream
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_items: fft_size
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [648, 112.0]
+    rotation: 0
+    state: true
 - name: digital_ofdm_cyclic_prefixer_0
   id: digital_ofdm_cyclic_prefixer
   parameters:
@@ -399,13 +435,15 @@ connections:
 - [blocks_magphase_to_complex_0, '0', blocks_stream_to_vector_0, '0']
 - [blocks_multiply_const_vxx_0, '0', blocks_transcendental_0, '0']
 - [blocks_multiply_const_vxx_1, '0', blocks_complex_to_interleaved_short_0, '0']
-- [blocks_repeat_0, '0', digital_ofdm_cyclic_prefixer_0, '0']
+- [blocks_repeat_1, '0', blocks_vector_to_stream_0, '0']
 - [blocks_stream_to_vector_0, '0', fft_vxx_0, '0']
+- [blocks_stream_to_vector_1, '0', blocks_repeat_1, '0']
 - [blocks_transcendental_0, '0', blocks_magphase_to_complex_0, '0']
 - [blocks_uchar_to_float_0, '0', blocks_add_const_vxx_0, '0']
+- [blocks_vector_to_stream_0, '0', blocks_uchar_to_float_0, '0']
 - [digital_ofdm_cyclic_prefixer_0, '0', blocks_keep_m_in_n_0, '0']
-- [fft_vxx_0, '0', blocks_repeat_0, '0']
-- [paint_image_source_0, '0', blocks_uchar_to_float_0, '0']
+- [fft_vxx_0, '0', digital_ofdm_cyclic_prefixer_0, '0']
+- [paint_image_source_0, '0', blocks_stream_to_vector_1, '0']
 
 metadata:
   file_format: 1
