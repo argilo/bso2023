@@ -160,10 +160,10 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    mag: phase
+    mag: mag
     maxoutbuf: '0'
     minoutbuf: '0'
-    phase: '0'
+    phase: phase
   states:
     bus_sink: false
     bus_source: false
