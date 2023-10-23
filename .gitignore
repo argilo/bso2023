@@ -4,6 +4,9 @@
 /fm/extract_fm.py
 /hop/hop.sigmf-*
 /hop/hop.py
+/paint/flag.png
+/paint/paint_wide.py
+/paint/paint.sigmf-*
 /rsa/generate.sage.py
 /rsa/private.pem
 /rsa/public.pem
