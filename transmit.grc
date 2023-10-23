@@ -57,11 +57,32 @@ blocks:
     coordinate: [456, 12.0]
     rotation: 0
     state: true
-- name: mag
+- name: i_off
   id: variable_qtgui_range
   parameters:
     comment: ''
     gui_hint: 1, 0, 1, 1
+    label: ''
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '-0.02'
+    step: '0.0001'
+    stop: '0.02'
+    value: '0'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [928, 12.0]
+    rotation: 0
+    state: true
+- name: mag
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: 3, 0, 1, 1
     label: ''
     min_len: '200'
     orient: QtCore.Qt.Horizontal
@@ -75,14 +96,14 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [768, 12.0]
+    coordinate: [928, 124.0]
     rotation: 0
     state: true
 - name: phase
   id: variable_qtgui_range
   parameters:
     comment: ''
-    gui_hint: 2, 0, 1, 1
+    gui_hint: 4, 0, 1, 1
     label: ''
     min_len: '200'
     orient: QtCore.Qt.Horizontal
@@ -96,7 +117,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [896, 12.0]
+    coordinate: [1056, 124.0]
     rotation: 0
     state: true
 - name: power
@@ -120,6 +141,27 @@ blocks:
     coordinate: [648, 12.0]
     rotation: 0
     state: true
+- name: q_off
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: 2, 0, 1, 1
+    label: ''
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '-0.02'
+    step: '0.0001'
+    stop: '0.02'
+    value: '0'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1056, 12.0]
+    rotation: 0
+    state: true
 - name: samp_rate
   id: variable
   parameters:
@@ -132,6 +174,24 @@ blocks:
     coordinate: [184, 12]
     rotation: 0
     state: enabled
+- name: blocks_add_const_vxx_0
+  id: blocks_add_const_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    const: i_off + q_off * 1j
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [688, 284.0]
+    rotation: 0
+    state: true
 - name: blocks_file_source_0
   id: blocks_file_source
   parameters:
@@ -151,7 +211,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [232, 172.0]
+    coordinate: [248, 236.0]
     rotation: 0
     state: true
 - name: iqbalance_fix_cc_0
@@ -168,7 +228,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [496, 208.0]
+    coordinate: [496, 272.0]
     rotation: 0
     state: true
 - name: soapy_bladerf_sink_0
@@ -188,7 +248,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [720, 224.0]
+    coordinate: [880, 288.0]
     rotation: 0
     state: true
 - name: uhd_usrp_sink_0
@@ -465,14 +525,15 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [464, 316.0]
+    coordinate: [496, 396.0]
     rotation: 0
     state: disabled
 
 connections:
+- [blocks_add_const_vxx_0, '0', soapy_bladerf_sink_0, '0']
 - [blocks_file_source_0, '0', iqbalance_fix_cc_0, '0']
 - [blocks_file_source_0, '0', uhd_usrp_sink_0, '0']
-- [iqbalance_fix_cc_0, '0', soapy_bladerf_sink_0, '0']
+- [iqbalance_fix_cc_0, '0', blocks_add_const_vxx_0, '0']
 
 metadata:
   file_format: 1
