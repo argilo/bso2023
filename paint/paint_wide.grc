@@ -49,7 +49,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '8192'
+    value: '4096'
   states:
     bus_sink: false
     bus_source: false
@@ -182,7 +182,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    const: '0.009'
+    const: '0.018'
     maxoutbuf: '0'
     minoutbuf: '0'
     type: complex
