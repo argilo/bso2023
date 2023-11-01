@@ -6,7 +6,7 @@ import random
 import zipfile
 
 FLAG = "flag{oOoo0pS_0fF_bY_10x}"
-BITS = round(409.6)
+BITS = round(330)
 
 NUM_FILES = 1000
 START_DT = datetime(2023, 1, 1)
